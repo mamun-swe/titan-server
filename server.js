@@ -4,22 +4,22 @@ const morgan = require('morgan')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 
-mongoose.connect('mongodb+srv://mamun:mamun166009@cluster0-vxoak.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true })
-.then(()=>console.log("DB server connect"))
-.catch(e => console.log("DB error", e));
-var db = mongoose.connection;
-if(!db)
-console.log("Error connecting db")
-else
-console.log("Db connected successfully")
+// mongoose.connect('mongodb+srv://mamun:mamun166009@cluster0-vxoak.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true })
+// .then(()=>console.log("DB server connect"))
+// .catch(e => console.log("DB error", e));
+// var db = mongoose.connection;
+// if(!db)
+// console.log("Error connecting db")
+// else
+// console.log("Db connected successfully")
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/esports', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+})
 
-// const db = mongoose.connection
-// db.on('error', (err) => {
-//     console.log(err)
-// })
-// db.once('open', () => {
-//     console.log('MongoDB connection success')
-// })
+mongoose.connection.on('connected', () => {
+    console.log('MongoDB connected')
+})
 
 
 
