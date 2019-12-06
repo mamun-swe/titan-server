@@ -48,7 +48,7 @@ const getNews = (req, res) => {
                         id: doc._id,
                         title: doc.title,
                         content: doc.content,
-                        file: "http://localhost:3000/uploads/news/" + doc.file,
+                        file: "https://esports-api.herokuapp.com/uploads/news/" + doc.file,
                         date: doc.date
                     };
                 })

@@ -43,7 +43,7 @@ const getBanners = (req, res) => {
                     return {
                         content: doc.content,
                         id: doc._id,
-                        file: "http://localhost:3000/uploads/banner/" + doc.file
+                        file: "https://esports-api.herokuapp.com/uploads/banner/" + doc.file
                     };
                 })
             };
