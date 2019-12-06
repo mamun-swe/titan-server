@@ -38,7 +38,7 @@ router.get('/get-news', Authenticate, NewsControllers.getNews)
 router.delete('/remove-news/:id', Authenticate, NewsControllers.removeSingleNews)
 router.get('/total-news', Authenticate, NewsControllers.totalNewsCount)
 router.get('/single-news/:id', Authenticate, NewsControllers.getSingleNewsById)
-router.patch('/update-news', Authenticate, NewsControllers.newsUpdate)
+router.put('/update-news', Authenticate, NewsControllers.newsUpdate)
 
 
 
