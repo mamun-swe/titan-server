@@ -127,6 +127,7 @@ const newsUpdate = (req, res) => {
             res.json({
                 message: "error"
             })
+            res.send(err)
         })
 }
 
