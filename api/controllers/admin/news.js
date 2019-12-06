@@ -124,7 +124,7 @@ const newsUpdate = (req, res) => {
             })
         })
         .catch(err => {
-            res.json({
+            res.status(500).json({
                 message: "error",
                 error: err
             })
