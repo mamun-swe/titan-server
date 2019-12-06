@@ -11,7 +11,7 @@ const allBanner = (req, res) => {
             const response = {
                 sliders: docs.map(doc => {
                     return {
-                        file: "http://localhost:3000/uploads/banner/" + doc.file
+                        file: "https://esports-api.herokuapp.com/uploads/banner/" + doc.file
                     };
                 })
             };
