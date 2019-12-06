@@ -2,7 +2,7 @@ const Banner = require('../../models/banner')
 const Company = require('../../models/companies')
 const News = require('../../models/news')
 const Team = require('../../models/team')
-const port = 'http://localhost:3000'
+
 
 // Banner / Sliders
 const allBanner = (req, res) => {
@@ -11,7 +11,7 @@ const allBanner = (req, res) => {
             const response = {
                 sliders: docs.map(doc => {
                     return {
-                        file: "https://esports-api.herokuapp.com/uploads/banner/" + doc.file
+                        file: "https://dashboard.heroku.com/uploads/banner/" + doc.file
                     };
                 })
             };

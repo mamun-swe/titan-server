@@ -4,15 +4,7 @@ const morgan = require('morgan')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 
-// mongoose.connect('mongodb+srv://mamun:mamun166009@cluster0-vxoak.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true })
-// .then(()=>console.log("DB server connect"))
-// .catch(e => console.log("DB error", e));
-// var db = mongoose.connection;
-// if(!db)
-// console.log("Error connecting db")
-// else
-// console.log("Db connected successfully")
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/esports', {
+mongoose.connect('mongodb+srv://mamun:8yyLxSIJ8hPDdwZ9@cluster0-vxoak.mongodb.net/test?retryWrites=true&w=majority/test', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
