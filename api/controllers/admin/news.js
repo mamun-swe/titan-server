@@ -125,9 +125,10 @@ const newsUpdate = (req, res) => {
         })
         .catch(err => {
             res.json({
-                message: "error"
+                message: "error",
+                error: err
             })
-            res.send(err)
+            // res.send(err)
         })
 }
 
