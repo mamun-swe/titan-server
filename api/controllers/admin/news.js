@@ -112,16 +112,18 @@ const getSingleNewsById = (req, res) => {
 }
 
 const newsUpdate = (req, res) => {
-    News.findOneAndUpdate({ _id: req.body._id }, {
+    News.findByIdAndUpdate({ _id: req.body._id }, {
         $set: {
             'title': req.body.title,
             'content': req.body.content
         }
     })
         .then(data => {
-            res.json({
-                message: "success"
-            })
+            if(data){
+                res.json({
+                    message: "success"
+                })
+            }
         })
         .catch(err => {
             res.status(500).json({
