@@ -122,7 +122,7 @@ const newsUpdate = (req, res) => {
         })
         .then(data => {
             if(data){
-                res.send({
+                res.status(200).json({
                     message: 'ok'
                 })
             }
