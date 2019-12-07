@@ -119,19 +119,17 @@ const newsUpdate = (req, res) => {
         }
     })
         .then(data => {
-            if(data){
-                res.json({
-                    message: "success",
-                    data
-                })
-            }
+            res.status(201).json({
+                message: 'success'
+            })
         })
         .catch(err => {
-            res.status(500).json({
-                message: "error",
-                error: err
-            })
-            // res.send(err)
+            if (err) {
+                res.status(501).json({
+                    message: 'error',
+                    errMessage: err
+                })
+            }
         })
 }
 
