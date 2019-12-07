@@ -113,22 +113,33 @@ const getSingleNewsById = (req, res) => {
 
 const newsUpdate = (req, res) => {
     let id = req.body._id;
-    News.findOne({ _id: id })
-    .then(data => {
-        if(data){
-            console.log(data)
-        }
-    })
-    .catch(err => {
-        if(err){
-            console.log(err)
-        }
-    })
+    News.updateOne({ _id: id },
+        {
+            $set: {
+                'title': req.body.title,
+                'content': req.body.content
+            }
+        })
+        .then(data => {
+            if(data){
+                res.send({
+                    message: 'ok'
+                })
+            }
+        })
+        .catch(err => {
+            if(err){
+                res.send({
+                    message: 'failed',
+                    errMessage: err
+                })
+            }
+        })
     // News.findOneAndUpdate({ _id: req.body._id }, {
-    //     $set: {
-    //         'title': req.body.title,
-    //         'content': req.body.content
-    //     }
+    // $set: {
+    //     'title': req.body.title,
+    //     'content': req.body.content
+    // }
     // })
     //     .then(data => {
     //         if(data){
@@ -142,14 +153,14 @@ const newsUpdate = (req, res) => {
     //         }
 
     //     })
-        // .catch(err => {
-        //     if (err) {
-        //         res.status(501).json({
-        //             message: 'error',
-        //             errMessage: err
-        //         })
-        //     }
-        // })
+    // .catch(err => {
+    //     if (err) {
+    //         res.status(501).json({
+    //             message: 'error',
+    //             errMessage: err
+    //         })
+    //     }
+    // })
 }
 
 module.exports = {
