@@ -117,7 +117,7 @@ const newsUpdate = (req, res) => {
             'title': req.body.title,
             'content': req.body.content
         }
-    },{multi:true})
+    })
         .then(data => {
             if(data){
                 res.json({
