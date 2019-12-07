@@ -112,7 +112,18 @@ const getSingleNewsById = (req, res) => {
 }
 
 const newsUpdate = (req, res) => {
-    console.log(req.body)
+    let id = red.body._id;
+    News.findOne({ _id: id })
+    .then(data => {
+        if(data){
+            console.log(data)
+        }
+    })
+    .catch(err => {
+        if(err){
+            console.log(err)
+        }
+    })
     // News.findOneAndUpdate({ _id: req.body._id }, {
     //     $set: {
     //         'title': req.body.title,
