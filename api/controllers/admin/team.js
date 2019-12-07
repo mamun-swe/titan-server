@@ -25,14 +25,18 @@ const createTeam = (req, res, next) => {
         })
         newTeam.save()
             .then(data => {
-                res.status(201).json({
-                    success: true
-                })
+                if(data){
+                    res.status(204).json({
+                        success: true
+                    })
+                }
             })
             .catch(err => {
-                res.status(501).json({
-                    success: false
-                })
+                if(err){
+                    res.status(501).json({
+                        success: false
+                    })
+                }
             })
     })
 }
