@@ -25,14 +25,19 @@ const createNews = (req, res, next) => {
         })
         newNews.save()
             .then(data => {
-                res.status(201).json({
-                    success: true
-                })
+                if (data) {
+                    res.status(200).json({
+                        success: true
+                    })
+                }
             })
             .catch(err => {
-                res.status(501).json({
-                    success: false
-                })
+                if (err) {
+                    res.send({
+                        message: 'error',
+                        errMessage: err
+                    })
+                }
             })
     })
 }
@@ -56,9 +61,12 @@ const getNews = (req, res) => {
             res.status(200).json(response);
         })
         .catch(err => {
-            res.status(500).json({
-                error: err
-            });
+            if (err) {
+                res.send({
+                    message: 'error',
+                    errMessage: err
+                })
+            }
         });
 }
 
@@ -66,14 +74,17 @@ const getNews = (req, res) => {
 const removeSingleNews = (req, res) => {
     News.findByIdAndRemove({ _id: req.params.id })
         .then(data => {
-            res.status(200).json({
-                success: true
-            })
+            if (data) {
+                res.status(200).json({
+                    success: true
+                })
+            }
         })
         .catch(err => {
             if (err) {
-                res.status(501).json({
-                    success: false
+                res.send({
+                    message: 'error',
+                    errMessage: err
                 })
             }
         })
@@ -121,16 +132,16 @@ const newsUpdate = (req, res) => {
             }
         })
         .then(data => {
-            if(data){
+            if (data) {
                 res.status(200).json({
                     message: 'ok'
                 })
             }
         })
         .catch(err => {
-            if(err){
+            if (err) {
                 res.send({
-                    message: 'failed',
+                    message: 'error',
                     errMessage: err
                 })
             }
