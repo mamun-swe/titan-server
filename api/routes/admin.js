@@ -6,6 +6,7 @@ const BannerControllers = require('../controllers/admin/banner')
 const CompanyControllers = require('../controllers/admin/company')
 const TeamControllers = require('../controllers/admin/team')
 const NewsControllers = require('../controllers/admin/news')
+const SocialControllers = require('../controllers/admin/social')
 
 
 
@@ -39,6 +40,9 @@ router.delete('/remove-news/:id', Authenticate, NewsControllers.removeSingleNews
 router.get('/total-news', Authenticate, NewsControllers.totalNewsCount)
 router.get('/single-news/:id', Authenticate, NewsControllers.getSingleNewsById)
 router.patch('/update-news', Authenticate, NewsControllers.newsUpdate)
+
+
+router.get('/get-social', Authenticate, SocialControllers.getSocialLinks)
 
 
 
