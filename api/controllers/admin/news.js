@@ -112,7 +112,7 @@ const getSingleNewsById = (req, res) => {
 }
 
 const newsUpdate = (req, res) => {
-    News.update({ _id: req.body._id }, {
+    News.updateOne({ _id: req.body._id }, {
         $set: {
             'title': req.body.title,
             'content': req.body.content
