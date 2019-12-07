@@ -119,7 +119,7 @@ const newsUpdate = (req, res) => {
         }
     })
         .then(data => {
-            res.status(201).json({
+            res.status(204).json({
                 message: 'success'
             })
         })
