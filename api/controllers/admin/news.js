@@ -3,7 +3,7 @@ const News = require('../../models/news')
 
 var store = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, './uploads/news')
+        cb(null, '/uploads/news')
     },
     filename: function (req, file, cb) {
         cb(null, Date.now() + '.' + file.originalname)
