@@ -135,32 +135,6 @@ const newsUpdate = (req, res) => {
                 })
             }
         })
-    // News.findOneAndUpdate({ _id: req.body._id }, {
-    // $set: {
-    //     'title': req.body.title,
-    //     'content': req.body.content
-    // }
-    // })
-    //     .then(data => {
-    //         if(data){
-    //             res.status(200).json({
-    //                 message: 'success'
-    //             })
-    //         }else {
-    //             res.status(204).json({
-    //                 message: 'error'
-    //             })
-    //         }
-
-    //     })
-    // .catch(err => {
-    //     if (err) {
-    //         res.status(501).json({
-    //             message: 'error',
-    //             errMessage: err
-    //         })
-    //     }
-    // })
 }
 
 module.exports = {
