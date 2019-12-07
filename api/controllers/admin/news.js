@@ -121,7 +121,8 @@ const newsUpdate = (req, res) => {
         .then(data => {
             if(data){
                 res.json({
-                    message: "success"
+                    message: "success",
+                    data
                 })
             }
         })
