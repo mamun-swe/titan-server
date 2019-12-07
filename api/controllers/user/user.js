@@ -2,6 +2,7 @@ const Banner = require('../../models/banner')
 const Company = require('../../models/companies')
 const News = require('../../models/news')
 const Team = require('../../models/team')
+const Social = require('../../models/social')
 
 
 // Banner / Sliders
@@ -182,6 +183,24 @@ const getSingleTeam = (req, res) => {
 }
 
 
+// Social links
+const getSocialLinks = (req, res) => {
+    Social.find()
+    .then(links => {
+        res.status(200).json({
+            links
+        })
+    })
+    .catch(err => {
+        if(err) {
+            res.send({
+                message: 'error'
+            })
+        }
+    })
+}
+
+
 
 module.exports = {
     allBanner,
@@ -191,5 +210,6 @@ module.exports = {
     readSingleNews,
     lasteNineTeam,
     allTeam,
-    getSingleTeam
+    getSingleTeam,
+    getSocialLinks
 }

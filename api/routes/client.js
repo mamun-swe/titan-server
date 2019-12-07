@@ -11,6 +11,7 @@ router.get('/read-news/:id', UserContrllers.readSingleNews)
 router.get('/nine-team', UserContrllers.lasteNineTeam)
 router.get('/all-team', UserContrllers.allTeam)
 router.get('/single-team/:id', UserContrllers.getSingleTeam)
+router.get('/social-links', UserContrllers.getSocialLinks)
 
 
 module.exports = router
