@@ -12,34 +12,35 @@ var store = multer.diskStorage({
 var upload = multer({ storage: store }).single('file')
 
 
-const createNews = (req, res, next) => {
-    upload(req, res, function (err) {
-        if (err) {
-            return res.status(501).json({ error: err });
-        }
-        const newNews = new News({
-            title: req.body.title,
-            content: req.body.content,
-            file: req.file.filename,
-            date: Date.now()
-        })
-        newNews.save()
-            .then(data => {
-                if (data) {
-                    res.status(200).json({
-                        success: true
-                    })
-                }
-            })
-            .catch(err => {
-                if (err) {
-                    res.send({
-                        message: 'error',
-                        errMessage: err
-                    })
-                }
-            })
-    })
+const createNews = (req, res) => {
+console.log(req.body)
+    // upload(req, res, function (err) {
+    //     if (err) {
+    //         return res.status(501).json({ error: err });
+    //     }
+    //     const newNews = new News({
+    //         title: req.body.title,
+    //         content: req.body.content,
+    //         file: req.file.filename,
+    //         date: Date.now()
+    //     })
+    //     newNews.save()
+    //         .then(data => {
+    //             if (data) {
+    //                 res.status(200).json({
+    //                     success: true
+    //                 })
+    //             }
+    //         })
+    //         .catch(err => {
+    //             if (err) {
+    //                 res.send({
+    //                     message: 'error',
+    //                     errMessage: err
+    //                 })
+    //             }
+    //         })
+    // })
 }
 
 
