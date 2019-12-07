@@ -43,6 +43,11 @@ router.patch('/update-news', Authenticate, NewsControllers.newsUpdate)
 
 
 router.get('/get-social', Authenticate, SocialControllers.getSocialLinks)
+router.patch('/striming-update', Authenticate, SocialControllers.strimingUpdate)
+router.patch('/facebook-update', Authenticate, SocialControllers.facebookUpdate)
+router.patch('/instagram-update', Authenticate, SocialControllers.instagramUpdate)
+router.patch('/discord-update', Authenticate, SocialControllers.discordUpdate)
+router.patch('/youtube-update', Authenticate, SocialControllers.youtubeUpdate)
 
 
 
