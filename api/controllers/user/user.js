@@ -12,7 +12,7 @@ const allBanner = (req, res) => {
             const response = {
                 sliders: docs.map(doc => {
                     return {
-                        file: "http://localhost:3000/uploads/banner/" + doc.file
+                        file: "http://35.171.18.185:3000/uploads/banner/" + doc.file
                     };
                 })
             };
@@ -37,7 +37,7 @@ const lastFourNews = (req, res) => {
                         date: doc.date,
                         title: doc.title,
                         content: doc.content,
-                        file: "http://localhost:3000/uploads/news/" + doc.file
+                        file: "http://35.171.18.185:3000/uploads/news/" + doc.file
                     };
                 })
             };
@@ -61,7 +61,7 @@ const allNews = (req, res) => {
                         date: doc.date,
                         title: doc.title,
                         content: doc.content,
-                        file: "http://localhost:3000/uploads/news/" + doc.file
+                        file: "http://35.171.18.185:3000/uploads/news/" + doc.file
                     };
                 })
             };
@@ -83,7 +83,7 @@ const readSingleNews = (req, res) => {
                     date: docs.date,
                     title: docs.title,
                     content: docs.content,
-                    file: "http://localhost:3000/uploads/news/" + docs.file
+                    file: "http://35.171.18.185:3000/uploads/news/" + docs.file
 
                 });
             }
@@ -106,7 +106,7 @@ const lasteNineTeam = (req, res) => {
                         id: doc._id,
                         name: doc.name,
                         about: doc.about,
-                        file: "http://localhost:3000/uploads/team/" + doc.file
+                        file: "http://35.171.18.185:3000/uploads/team/" + doc.file
                     };
                 })
             };
@@ -129,7 +129,7 @@ const allTeam = (req, res) => {
                         id: doc._id,
                         name: doc.name,
                         about: doc.about,
-                        file: "http://localhost:3000/uploads/team/" + doc.file
+                        file: "http://35.171.18.185:3000/uploads/team/" + doc.file
                     };
                 })
             };
@@ -150,7 +150,7 @@ const getSingleTeam = (req, res) => {
                 res.status(200).json({
                     name: docs.name,
                     about: docs.about,
-                    file: "http://localhost:3000/uploads/team/" + docs.file
+                    file: "http://35.171.18.185:3000/uploads/team/" + docs.file
 
                 });
             }
