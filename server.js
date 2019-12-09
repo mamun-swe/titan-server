@@ -4,7 +4,8 @@ const morgan = require('morgan')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 
-mongoose.connect('mongodb+srv://mamun:8yyLxSIJ8hPDdwZ9@cluster0-vxoak.mongodb.net/test?retryWrites=true&w=majority/test', {
+// mongoose.connect('mongodb+srv://mamun:8yyLxSIJ8hPDdwZ9@cluster0-vxoak.mongodb.net/test?retryWrites=true&w=majority/test', {
+mongoose.connect('mongodb://localhost:27017/esports', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })

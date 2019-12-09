@@ -1,4 +1,4 @@
-
+const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const Admin = require('../../models/admin')
 
@@ -14,22 +14,29 @@ const createAdmin = (req, res) => {
                     message: 'exist'
                 })
             } else {
-                const newAdmin = new Admin({
-                    name: name,
-                    email: email,
-                    password: password
+                bcrypt.hash(password, 10, (err, hash) => {
+                    if (err) {
+                        res.json({
+                            error: err
+                        })
+                    }
+                    const newAdmin = new Admin({
+                        name: name,
+                        email: email,
+                        password: hash
+                    })
+                    newAdmin.save()
+                        .then(data => {
+                            res.status(201).json({
+                                message: 'success'
+                            })
+                        })
+                        .catch(err => {
+                            res.status(501).json({
+                                message: 'error'
+                            })
+                        })
                 })
-                newAdmin.save()
-                    .then(data => {
-                        res.status(201).json({
-                            message: 'success'
-                        })
-                    })
-                    .catch(err => {
-                        res.status(501).json({
-                            message: 'error'
-                        })
-                    })
             }
         })
         .catch(err => {
@@ -48,12 +55,25 @@ const adminLogin = (req, res) => {
     Admin.findOne({ email })
         .then(admin => {
             if (admin) {
-                const token = jwt.sign({ _id: admin._id }, 'SECRET',
-                    { expiresIn: '24h' })
-                res.json({
-                    message: 'success',
-                    token,
-                    id: admin._id
+                bcrypt.compare(password, admin.password, (err, result) => {
+                    if (err) {
+                        res.json({
+                            message: 'error'
+                        })
+                    }
+                    if (result) {
+                        const token = jwt.sign({ _id: admin._id }, 'SECRET',
+                            { expiresIn: '24h' })
+                        res.json({
+                            message: 'success',
+                            token,
+                            id: admin._id
+                        })
+                    } else {
+                        res.json({
+                            message: 'error'
+                        })
+                    }
                 })
 
             } else {
@@ -145,32 +165,32 @@ const updateAdmin = (req, res) => {
 }
 
 const updateAdminPassword = (req, res) => {
-    // Admin.findOne({ email: req.body.email })
-    //     .then(admin => {
-    //         if (admin) {
-    //             bcrypt.hash(req.body.password, 10, (err, hash) => {
-    //                 if (err) {
-    //                     res.json({
-    //                         error: err
-    //                     })
-    //                 }
-    //                 let email = req.body.email;
-    //                 Admin.findOneAndUpdate({ email: email },
-    //                     { $set: { "password": hash } })
-    //                     .then(data => {
-    //                         res.status(201).json({
-    //                             message: 'success'
-    //                         })
-    //                     })
-    //                     .catch(err => {
-    //                         res.status(501).json({
-    //                             message: 'error'
-    //                         })
-    //                     })
+    Admin.findOne({ email: req.body.email })
+        .then(admin => {
+            if (admin) {
+                bcrypt.hash(req.body.password, 10, (err, hash) => {
+                    if (err) {
+                        res.json({
+                            error: err
+                        })
+                    }
+                    let email = req.body.email;
+                    Admin.findOneAndUpdate({ email: email },
+                        { $set: { "password": hash } })
+                        .then(data => {
+                            res.status(201).json({
+                                message: 'success'
+                            })
+                        })
+                        .catch(err => {
+                            res.status(501).json({
+                                message: 'error'
+                            })
+                        })
 
-    //             })
-    //         }
-    //     })
+                })
+            }
+        })
 }
 
 module.exports = {
