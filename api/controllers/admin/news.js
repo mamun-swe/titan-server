@@ -51,7 +51,7 @@ const getNews = (req, res) => {
                         id: doc._id,
                         title: doc.title,
                         content: doc.content,
-                        file: "http://35.171.18.185:3000/uploads/news/" + doc.file,
+                        file: "http://localhost:3000/uploads/news/" + doc.file,
                         date: doc.date
                     };
                 })

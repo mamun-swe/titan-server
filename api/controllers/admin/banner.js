@@ -45,7 +45,7 @@ const getBanners = (req, res) => {
                     return {
                         content: doc.content,
                         id: doc._id,
-                        file: "http://35.171.18.185:3000/uploads/banner/" + doc.file
+                        file: "http://localhost:3000/uploads/banner/" + doc.file
                     };
                 })
             };

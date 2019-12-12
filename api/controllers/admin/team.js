@@ -52,7 +52,7 @@ const getTeams = (req, res) => {
                         id: doc._id,
                         name: doc.name,
                         about: doc.about,
-                        file: "http://35.171.18.185:3000/uploads/team/" + doc.file,
+                        file: "http://localhost:3000/uploads/team/" + doc.file,
                         date: doc.date
                     };
                 })
