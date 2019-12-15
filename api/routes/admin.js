@@ -37,7 +37,7 @@ router.get('/single-news/:id', Authenticate, NewsControllers.getSingleNewsById)
 router.patch('/update-news', Authenticate, NewsControllers.newsUpdate)
 
 
-// router.get('/save-social', SocialControllers.setSocial)
+router.get('/save-social', SocialControllers.setSocial)
 router.get('/get-social', Authenticate, SocialControllers.getSocialLinks)
 router.patch('/striming-update', Authenticate, SocialControllers.strimingUpdate)
 router.patch('/facebook-update', Authenticate, SocialControllers.facebookUpdate)
