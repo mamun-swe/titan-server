@@ -1,5 +1,6 @@
 const multer = require('multer')
 const Team = require('../../models/team')
+var url = "http://localhost:3000"
 
 var store = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -52,7 +53,7 @@ const getTeams = (req, res) => {
                         id: doc._id,
                         name: doc.name,
                         about: doc.about,
-                        file: "http://localhost:3000/uploads/team/" + doc.file,
+                        file: url + "/uploads/team/" + doc.file,
                         date: doc.date
                     };
                 })

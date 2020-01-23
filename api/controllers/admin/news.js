@@ -1,5 +1,6 @@
 const multer = require('multer')
 const News = require('../../models/news')
+var url = "http://localhost:3000"
 
 var store = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -51,7 +52,7 @@ const getNews = (req, res) => {
                         id: doc._id,
                         title: doc.title,
                         content: doc.content,
-                        file: "http://localhost:3000/uploads/news/" + doc.file,
+                        file: url + "/uploads/news/" + doc.file,
                         date: doc.date
                     };
                 })

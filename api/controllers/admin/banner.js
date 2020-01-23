@@ -1,5 +1,6 @@
 const multer = require('multer')
 const Banner = require('../../models/banner')
+var url = "http://localhost:3000"
 
 var store = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -45,7 +46,7 @@ const getBanners = (req, res) => {
                     return {
                         content: doc.content,
                         id: doc._id,
-                        file: "http://localhost:3000/uploads/banner/" + doc.file
+                        file: url + "/uploads/banner/" + doc.file
                     };
                 })
             };

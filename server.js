@@ -24,6 +24,7 @@ app.use(bodyParser.json())
 app.use(cors())
 
 
+
 app.use('/uploads/banner', express.static('uploads/banner/'));
 app.use('/uploads/company', express.static('uploads/company/'));
 app.use('/uploads/team', express.static('uploads/team/'));
